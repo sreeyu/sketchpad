@@ -36,27 +36,54 @@ popBtn.addEventListener('click', function(){
     input.addEventListener('input', () =>{
         if(input.value){
             okBtn.disabled = false;
-            okBtn.addEventListener('click', () =>{
-                const gridNum = input.value;
-                console.log(gridNum);
-            })
         }
         else{
             okBtn.disabled = true;
         }
        
+    });
+
+    okBtn.addEventListener('click', () =>{
+        const gridNum = input.value;
+        popup.remove();
+        updateGrid(gridNum);
     })
+
+    const cancel = popup.querySelector('#close-btn');
+    cancel.addEventListener('click', ()=>{
+        popup.remove();
+    })
+
     
 })
 
 
 
-function updateGrid(n){
-    const square = document.querySelectorAll('.container .square');
-    square.forEach(squares => {
-        console.log(n);
-      squares.style.width = "20px";
+function updateGrid(gridNum){
+
+    const oldGrid = document.querySelectorAll('.container .square');
+    oldGrid.forEach(square => {
+        square.remove();
+    })
+    
+    const n = Number(gridNum);
+
+    for (let i = 0; i < n*n; i++){
+        const squares = document.createElement('div');
+        squares.classList.add('square');
+        container.appendChild(squares);
+    }
+    
+    const width = Math.round((586/n) - 2);
+    const height = width + 0.2;
+    console.log(container);
+
+    const squares = document.querySelectorAll('.container .square');
+    squares.forEach(square => {
+      square.style.width = `${width}px`;
+      square.style.height = `${height}px`;
    })
+   
 }
 
 
