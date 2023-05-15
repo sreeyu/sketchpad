@@ -1,11 +1,11 @@
 const container = document.querySelector('.container');
 
 
-for (let i = 0; i < 256; i++){
+/*for (let i = 0; i < 256; i++){
     const squares = document.createElement('div');
     squares.classList.add('square');
     container.appendChild(squares);
-}
+}*/
 
 function setBg(square){
     square.style.backgroundColor = 'yellow';
@@ -61,7 +61,17 @@ popBtn.addEventListener('click', function(){
 
 function updateGrid(gridNum){
 
-    const oldGrid = document.querySelectorAll('.container .square');
+    container.style.setProperty('--grid-rows', gridNum);
+    container.style.setProperty('--grid-cols', gridNum);
+
+    for (i = 0; i < (gridNum * gridNum); i++){
+        const squares = document.createElement('div');
+        squares.classList.add('square');
+        
+        container.appendChild(squares);
+    }
+
+    /*const oldGrid = document.querySelectorAll('.container .square');
     oldGrid.forEach(square => {
         square.remove();
     })
@@ -82,7 +92,7 @@ function updateGrid(gridNum){
     squares.forEach(square => {
       square.style.width = `${width}px`;
       square.style.height = `${height}px`;
-   })
+   }) */
    
 }
 

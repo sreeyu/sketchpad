@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
 
+:root {
+    --grid-cols:1;
+    --grid-rows:1;
+}
+
 body{
     font-family: 'Patrick Hand SC', cursive;
     font-size: 1.5rem;
@@ -8,18 +13,19 @@ body{
 .container{
     padding: 0;
     border: 8px double black;
-    width: 586px;
-    height: 586px;
+    max-width: 586px;
+    min-height: 586px;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
+    display: grid;
+    
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
 
 .square{
     border: 1px solid black;
-    width: 35px;
-    height: 35.2px;
+    max-width: 35px;
+    min-height: 35px;
     margin: 0;
     padding: 0;
 }
