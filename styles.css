@@ -24,8 +24,8 @@ body{
 
 .square{
     border: 1px solid black;
-    max-width: 35px;
-    min-height: 35px;
+    max-width: 36px;
+    min-height: 36px;
     margin: 0;
     padding: 0;
 }
