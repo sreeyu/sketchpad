@@ -35,7 +35,7 @@ const createGrid = (gridNum) => {
             
         container.appendChild(squares);
     }
-    document.getElementById('rangeValue').innerText = gridNum;
+    document.getElementById('range-value').innerText = gridNum;
 
     const sides = Math.floor((container.offsetWidth - (gridNum) ) / gridNum);
     
