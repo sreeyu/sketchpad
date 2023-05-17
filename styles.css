@@ -12,9 +12,9 @@ body{
 
 .container{
     padding: 0;
-    border: 8px double black;
-    max-width: 586px;
-    min-height: 586px;
+    border: 2px solid black;
+    width: 586px;
+    height: 586px;
     margin: auto;
     display: grid;
     
@@ -23,9 +23,8 @@ body{
 }
 
 .square{
-    border: 1px solid black;
-    max-width: 36px;
-    min-height: 36px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
     margin: 0;
     padding: 0;
 }

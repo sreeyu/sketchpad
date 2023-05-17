@@ -29,6 +29,14 @@ const createGrid = (gridNum) => {
         container.appendChild(squares);
     }
     document.getElementById('rangeValue').innerText = gridNum;
+
+    const sides = Math.floor((container.offsetWidth - (gridNum) ) / gridNum);
+    console.log(container.offsetWidth)
+    const grids = document.querySelectorAll('.container .square');
+    grids.forEach(grid => {
+        grid.style.width = `${sides}px`;
+        grid.style.height = `${sides}px`;
+    })
 }
 
 
