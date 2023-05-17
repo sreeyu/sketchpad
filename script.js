@@ -8,7 +8,14 @@ const container = document.querySelector('.container');
 }*/
 
 function setBg(square){
-    square.style.backgroundColor = 'yellow';
+    const pastelColors = [
+        '#FFC0CB', '#FFDAB9', '#FFB6C1', '#FFA07A', '#FFD700', '#98FB98',
+        '#AFEEEE', '#B0E0E6', '#FF69B4', '#F0E68C', '#FFB5C5', '#E6E6FA',
+        '#ADD8E6', '#F08080', '#FFA500'
+      ];
+      
+      const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+    square.style.backgroundColor = randomColor;
 }
 
 container.addEventListener('mouseover', function(e){
@@ -31,7 +38,7 @@ const createGrid = (gridNum) => {
     document.getElementById('rangeValue').innerText = gridNum;
 
     const sides = Math.floor((container.offsetWidth - (gridNum) ) / gridNum);
-    console.log(container.offsetWidth)
+    
     const grids = document.querySelectorAll('.container .square');
     grids.forEach(grid => {
         grid.style.width = `${sides}px`;
