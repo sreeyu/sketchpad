@@ -88,4 +88,25 @@ button:hover{
 .popup input{
     border: 2px solid black;
     height: 2rem;
+   
+}
+
+@media only screen and (max-width: 768px){
+    body{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .container{
+        width: 200px;
+        height: 200px;
+    }
+
+    
+
+    h4{
+        font-size: 1rem;
+    }
+    button{
+        font-size: 1rem;
+    }
 }
