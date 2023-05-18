@@ -1,15 +1,18 @@
-# sketchpad
+# sketchpad 
 
-This is a simple web application that generates a grid of squares using HTML, CSS, and JavaScript. The grid is initially set to a size of 16x16 squares, but the user can customize the size by clicking the "Change Grid!" button and entering a new number of squares in a popup window.
+The Grid Colorizer is a simple web application that allows users to create a grid of squares and customize their colors. Users can choose the number of squares in the grid and select colors either by manually picking a color or generating random colors.
+
+## Features
+- Number of Square Grid: Users can use a range slider to choose the number of squares in the grid. The grid will adjust dynamically based on the selected value.
+- Color Selection: Users can select a color by either manually choosing one from the color picker or generating a random color by clicking the "Generate Random Color" button.
+- Grid Colorization: Each square in the grid can be clicked to apply the selected color.
 
 ## Usage
-To use the application, simply open the index.html file in your web browser. The grid of squares will be displayed on the page, and you can hover over each square to change its background color.
+- Access [Sketchpad](https://sreeyu.github.io/sketchpad/) application on your browser.
+- Use the range slider labeled "Choose the Number of Square Grid" to select the desired number of squares in the grid.
+- Select a color by either manually choosing one from the color picker or clicking the "Generate Random Color" button.
+- Click on any square in the grid to apply the selected color.
+- Repeat step 3 and step 4 to customize the colors of different squares in the grid.
 
-To change the size of the grid, click the "Change Grid!" button. A popup window will appear asking you to enter a new number of squares. After entering a value, click the "Okay" button to update the grid.
-
-## Future Developments
-* Add a range slider so the user can input the number of squares through it.
-* Add colors so that the user can choose a color according to their needs.
-
-## Credits
-This project was created as part of a web development course by The Odin Project. Thanks to their community for providing the guidance and resources needed to create this project.
+## License
+This project is licensed under the MIT License. Feel free to use, modify, and distribute this project as per the terms of the license.
