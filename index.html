@@ -9,10 +9,19 @@
         
     </head>
     <body>
-        <input type="range" min="'2" max="100" value="16" id="slider">
-        <span id="range-value"></span>
-        <input type="color" id="color-selector">
-        <button id="btn">Generate Random Color</button>
+        <div class="wrapper">
+            <fieldset class="grid-selector">
+                <h4>Choose the Number of Square Grid:</h4>
+                <input type="range" min="'2" max="100" value="16" id="slider">
+                <span id="range-value"></span>
+            </fieldset>
+            <fieldset class="hue-selector">
+                <h4>Select Color:</h4>
+                <input type="color" id="color-selector">
+                <button id="btn">Generate Random Color</button>
+            </fieldset>
+            
+        </div>
         <div class="container"></div>
     </body>
     <script src="script.js"></script>
