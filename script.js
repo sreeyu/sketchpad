@@ -1,11 +1,19 @@
 const container = document.querySelector('.container');
 
+let colorEnable = false;
 
-/*for (let i = 0; i < 256; i++){
-    const squares = document.createElement('div');
-    squares.classList.add('square');
-    container.appendChild(squares);
-}*/
+const button = document.getElementById('btn');
+
+button.addEventListener('click', () =>{
+    colorEnable = true;
+});
+
+
+const colorPicker = document.getElementById('color-selector');
+colorPicker.addEventListener('input', () => {
+    colorEnable = false;
+});
+
 
 function setBg(square){
     const pastelColors = [
@@ -13,12 +21,21 @@ function setBg(square){
         '#AFEEEE', '#B0E0E6', '#FF69B4', '#F0E68C', '#FFB5C5', '#E6E6FA',
         '#ADD8E6', '#F08080', '#FFA500'
       ];
+
+    if(colorEnable){
+        const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+        square.style.backgroundColor = randomColor;
+    }
+
+    else{
+        square.style.backgroundColor = colorPicker.value;
+    }
       
-      const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-    square.style.backgroundColor = randomColor;
+      
+    
 }
 
-container.addEventListener('mouseover', function(e){
+container.addEventListener('click', function(e){
 
     if (e.target.classList.contains('square')){
         setBg(e.target)
