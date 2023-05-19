@@ -45,13 +45,27 @@ const button = document.getElementById('btn');
 //enable the random color generator if the button is clicked
 button.addEventListener('click', () =>{
     colorEnable = true;
+    
 });
 
 //disable the random color generator if a color is picked
 const colorPicker = document.getElementById('color-selector');
 colorPicker.addEventListener('input', () => {
     colorEnable = false;
+    eraserEnable = false;
 });
+
+//variable to keep track if eraser is enabled
+let eraserEnable = false;
+
+const eraser = document.getElementById('eraser');
+
+//enable eraser on click 
+
+eraser.addEventListener('click', () => {
+    eraserEnable = true;
+    colorEnable = false;
+})
 
 //call setBg function when a square in the grid is being clicked
 container.addEventListener('click', function(e){
@@ -74,6 +88,10 @@ function setBg(square){
         square.style.backgroundColor = randomColor;
     }
 
+    else if(eraserEnable){
+        square.style.backgroundColor = 'white';
+    }
+
     else{
         square.style.backgroundColor = colorPicker.value;
     }
@@ -82,13 +100,15 @@ function setBg(square){
     
 }
 
+//clear the grid
+const clearAll = document.getElementById('clear-btn');
+clearAll.addEventListener('click', () => {
+    const oldGrid = document.querySelectorAll('.container .square');
+    oldGrid.forEach(square => {
+        square.remove();
+    })
 
-
-
-
-
- 
-
-
-
+    const x = document.getElementById('slider').value;
+    createGrid(x);
+})
 
