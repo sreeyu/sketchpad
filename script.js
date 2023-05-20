@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const rangeInput = document.getElementById('slider');
 
 //create the grid
 const createGrid = (gridNum) => {
@@ -23,18 +24,43 @@ const createGrid = (gridNum) => {
 }
 
 //initialize the grid
-createGrid(document.getElementById('slider').value);
+createGrid(rangeInput.value);
 
 //get user input from the slider to set the grid
-document.getElementById('slider').addEventListener('input',() => {
+rangeInput.addEventListener('change',() => {
 
     const oldGrid = document.querySelectorAll('.container .square');
     oldGrid.forEach(square => {
         square.remove();
     })
 
-    const x = document.getElementById('slider').value;
+    const x = rangeInput.value;
     createGrid(x);
+})
+
+//increase slider input by '+' button
+document.getElementById('add').addEventListener('click', () => {
+    const currentValue = parseInt(rangeInput.value);
+    const incrementedValue = currentValue + 1;
+
+    if(incrementedValue <= parseInt(rangeInput.max)){
+        rangeInput.value = incrementedValue;
+        const changeEvent = new Event('change');
+        rangeInput.dispatchEvent(changeEvent);
+    }
+    console.log(incrementedValue);
+})
+
+//decrease slider input by '-' button
+document.getElementById('minus').addEventListener('click', () =>{
+    const currentValue = parseInt(rangeInput.value);
+    const decrementValue = currentValue - 1;
+
+    if(decrementValue >= parseInt(rangeInput.min)){
+        rangeInput.value = decrementValue;
+        const eventChange = new Event('change');
+        rangeInput.dispatchEvent(eventChange);
+    }
 })
 
 //create variable to check if the random color generator should be enabled
