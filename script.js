@@ -89,8 +89,12 @@ const eraser = document.getElementById('eraser');
 //enable eraser on click 
 
 eraser.addEventListener('click', () => {
+    if (eraserEnable === true){
+        eraserEnable = false;
+    }
+    else{
     eraserEnable = true;
-    colorEnable = false;
+    colorEnable = false;}
 })
 
 //call setBg function when a square in the grid is being clicked
