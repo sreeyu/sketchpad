@@ -48,6 +48,7 @@ h4{
     border-right: 1px solid black;
     margin: 0;
     padding: 0;
+    background-color: white;
 }
 
 button{
@@ -68,6 +69,24 @@ button{
 button:hover{
     box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
 }
+
+.extra{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+figure {
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+}
+
+#color-filler{
+    max-width: 35px;
+}
+
+
 
 #add{
     max-width: 20px;

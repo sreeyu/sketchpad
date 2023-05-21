@@ -1,5 +1,6 @@
 const container = document.querySelector('.container');
 const rangeInput = document.getElementById('slider');
+let selector = false;
 
 //create the grid
 const createGrid = (gridNum) => {
@@ -48,7 +49,7 @@ document.getElementById('add').addEventListener('click', () => {
         const changeEvent = new Event('change');
         rangeInput.dispatchEvent(changeEvent);
     }
-    console.log(incrementedValue);
+
 })
 
 //decrease slider input by '-' button
@@ -71,7 +72,7 @@ const button = document.getElementById('btn');
 //enable the random color generator if the button is clicked
 button.addEventListener('click', () =>{
     colorEnable = true;
-    
+    selector = false;
 });
 
 //disable the random color generator if a color is picked
@@ -79,6 +80,7 @@ const colorPicker = document.getElementById('color-selector');
 colorPicker.addEventListener('input', () => {
     colorEnable = false;
     eraserEnable = false;
+    selector = false;
 });
 
 //variable to keep track if eraser is enabled
@@ -94,15 +96,30 @@ eraser.addEventListener('click', () => {
     }
     else{
     eraserEnable = true;
-    colorEnable = false;}
+    colorEnable = false;
+    selector = false;
+}
 })
 
 //call setBg function when a square in the grid is being clicked
 container.addEventListener('click', function(e){
-
+    
     if (e.target.classList.contains('square')){
-        setBg(e.target)
-    }
+        if(!selector){
+            setBg(e.target)
+        }
+        else{
+            const color = e.target.style.backgroundColor;
+            const [r, g, b] = color.match(/\d+/g);
+            const redHex = parseInt(r).toString(16).padStart(2, '0');
+            const greenHex = parseInt(g).toString(16).padStart(2,'0');
+            const blueHex = parseInt(b).toString(16).padStart(2, '0');
+            const hexCode = `#${redHex}${greenHex}${blueHex}`
+            colorPicker.value = hexCode;
+            const changeEvent = new Event('input');
+            colorPicker.dispatchEvent(changeEvent);
+        }
+}
 });
 
 //set the color of the clicked square based on user selection
@@ -111,24 +128,34 @@ function setBg(square){
         '#FFC0CB', '#FFDAB9', '#FFB6C1', '#FFA07A', '#FFD700', '#98FB98',
         '#AFEEEE', '#B0E0E6', '#FF69B4', '#F0E68C', '#FFB5C5', '#E6E6FA',
         '#ADD8E6', '#F08080', '#FFA500'
-      ];
+    ];
 
-    if(colorEnable){
-        const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-        square.style.backgroundColor = randomColor;
-    }
+    if(!selector){
 
-    else if(eraserEnable){
-        square.style.backgroundColor = 'white';
-    }
+        if(colorEnable){
+            const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+            square.style.backgroundColor = randomColor;
+        }
 
-    else{
-        square.style.backgroundColor = colorPicker.value;
-    }
+        else if(eraserEnable){
+            square.style.backgroundColor = 'white';
+        }
+
+        else{
+            square.style.backgroundColor = colorPicker.value;
+        }
       
-      
+    }
     
 }
+
+//pick the color from the grid of squares
+
+document.getElementById('picker').addEventListener('click', () => {
+    selector = true;
+    colorEnable = false;
+    }
+)
 
 //clear the grid
 const clearAll = document.getElementById('clear-btn');
